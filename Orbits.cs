@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.String.Split;
 
 namespace orbit_counter
 {
@@ -8,7 +9,12 @@ namespace orbit_counter
     {
         public static int OrbitCount(string map)
         {
-            return 0;
+            int links = 0;
+            var parsedMap = new Dictionary<char, string>();
+            map.Select(orbit => {
+                orbit.Split([')'], 2, StringSplitOptions.None);
+            });
+            return links;
         }
     }
 }
