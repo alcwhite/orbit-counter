@@ -12,7 +12,7 @@ namespace orbit_counter
             int links = 0;
             var parsedMap = new Dictionary<char, string>();
             map.Select(orbit => {
-                orbit.Split([')'], 2, StringSplitOptions.None);
+                orbit.Split(new char[]{')'}, 2, StringSplitOptions.None);
             });
             return links;
         }
