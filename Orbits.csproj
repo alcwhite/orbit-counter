@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
+   <ItemGroup>
     <Compile Remove="Example.cs" />
   </ItemGroup>
 
