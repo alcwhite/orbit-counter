@@ -9,7 +9,7 @@ namespace orbit_counter
         {
             int links = 0;
             var parsedMap = new Dictionary<string, string>();
-            var splitMap = map.Split("\n");
+            var splitMap = map.Split(Environment.NewLine);
             foreach (string orbit in splitMap)
             {
                 var splitOrbit = orbit.Split(')', 2);
