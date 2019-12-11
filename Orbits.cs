@@ -17,7 +17,6 @@ namespace orbit_counter
             };
             foreach (KeyValuePair<string, string> entry in parsedMap) 
             {
-                Console.WriteLine(entry);
                 int keyLinks = 1;
                 string value = entry.Value;
                 bool doAgain = true;
