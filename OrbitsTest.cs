@@ -17,4 +17,11 @@ public class OrbitsTest
         string map = "COM)B\nB)C\nB)D\nD)E\nE)F\nC)G\nG)H";
         Assert.Equal(19, orbit_counter.Orbits.OrbitCount(map));
     }
+
+    [Fact]
+    public void Puzzle_Input() 
+    {
+        string map = System.IO.File.ReadAllText(@"./../../input.txt");
+        Assert.Equal(100, orbit_counter.Orbits.OrbitCount(map));
+    }
 }
