@@ -1,27 +1,30 @@
 using Xunit;
 using System.Collections.Generic;
+using System.IO;
 
 public class OrbitsTest
 {
-    
+    string map = @"C:\Users\theth\Desktop\Practice\orbit-counter\input.txt";
+    string testMap = @"C:\Users\theth\Desktop\Practice\orbit-counter\testInput.txt";
+    string originalTestMap = @"C:\Users\theth\Desktop\Practice\orbit-counter\originalTestInput.txt";
     [Fact]
-    public void Example_input()
+    public void Puzzle_Input_All_Count() 
     {
-        string map = "COM)B\nB)C\nC)D\nD)E\nE)F\nB)G\nG)H\nD)I\nE)J\nJ)K\nK)L";
-        Assert.Equal(42, orbit_counter.Orbits.OrbitCount(map));
+        Assert.Equal(130681, orbit_counter.Orbits.OrbitCount(map));
     }
-
     [Fact]
-    public void New_Input()
+    public void Test_Input_All_Count() 
     {
-        string map = "COM)B\nB)C\nB)D\nD)E\nE)F\nC)G\nG)H";
-        Assert.Equal(19, orbit_counter.Orbits.OrbitCount(map));
+        Assert.Equal(42, orbit_counter.Orbits.OrbitCount(originalTestMap));
     }
-
     [Fact]
-    public void Puzzle_Input() 
+    public void Puzzle_Input_Santa_Count() 
     {
-        string map = System.IO.File.ReadAllText(@"./../../input.txt");
-        Assert.Equal(100, orbit_counter.Orbits.OrbitCount(map));
+        Assert.Equal(313, orbit_counter.Orbits.YouToSantaCount(map));
+    }
+    [Fact]
+    public void Test_Input_Santa_Count() 
+    {
+        Assert.Equal(4, orbit_counter.Orbits.YouToSantaCount(testMap));
     }
 }
