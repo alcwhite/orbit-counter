@@ -4,9 +4,9 @@ using System.IO;
 
 public class OrbitsTest
 {
-    string map = @"C:\Users\theth\Desktop\Practice\orbit-counter\input.txt";
-    string testMap = @"C:\Users\theth\Desktop\Practice\orbit-counter\testInput.txt";
-    string originalTestMap = @"C:\Users\theth\Desktop\Practice\orbit-counter\originalTestInput.txt";
+    string map = "../../../input.txt";
+    string testMap = "../../../testInput.txt";
+    string originalTestMap = "../../../originalTestInput.txt";
     [Fact]
     public void Puzzle_Input_All_Count() 
     {
