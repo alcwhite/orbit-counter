@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace orbit_counter
 {
@@ -20,24 +21,21 @@ namespace orbit_counter
             };
             return parsedMap;
         }
-        public static int OrbitCount(string mapFile)
+        public static int OrbitCount(this Dictionary<string, string> map, string moon)
         {
-            int links = 0;
-            var parsedMap = OrbitDictionary(mapFile);
-            foreach (KeyValuePair<string, string> entry in parsedMap) 
-            {
-                int keyLinks = 1;
-                string value = entry.Value;
-                bool doAgain = true;
-                while (value != "COM" && doAgain)
+                int keyLinks = 0;
+                while (moon != "COM")
                 {
                     keyLinks++;
-                    doAgain = parsedMap.TryGetValue(value, out string newValue);
-                    value = newValue;
+                    if (!map.TryGetValue(moon, out string newValue)) break;;
+                    moon = newValue;
                 }
-                links += keyLinks;
-            }
-            return links;
+            return keyLinks;
+        }
+        public static int OrbitCount(string mapFile)
+        {
+            var parsedMap = OrbitDictionary(mapFile);
+            return parsedMap.Sum(kv => OrbitCount(parsedMap, kv.Key));
         }
 
         public static int YouToSantaCount(string mapFile)
@@ -48,8 +46,6 @@ namespace orbit_counter
             var santaMap = new List<string>();
             string youValue = "YOU";
             string santaValue = "SAN";
-            foreach (KeyValuePair<string, string> entry in parsedMap)
-            {
                 while (youValue != "COM")
                 {
                     youMap.Add(youValue);
@@ -62,9 +58,7 @@ namespace orbit_counter
                     parsedMap.TryGetValue(santaValue, out string newValue);
                     santaValue = newValue;
                 }
-            }
-            links = santaMap.Count - 1 + youMap.IndexOf(santaValue) - 1; 
-
+            links = santaMap.Count + youMap.IndexOf(santaValue) - 2; 
             return links;
         }
     }
